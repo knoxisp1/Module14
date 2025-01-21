@@ -5,7 +5,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 import asyncio
 
-api = ""
+api = "7993073270:AAFjsMFNPo_sL-4wG7cuM_BCYIrgHJKNS6M"
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 kb_reply = ReplyKeyboardMarkup(resize_keyboard=True)
@@ -15,10 +15,10 @@ btn3 = KeyboardButton(text="Купить")
 kb_reply.add(btn1, btn2)
 kb_reply.add(btn3)
 kb_inline = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text="Product1", callback_data="product_buying")],
-    [InlineKeyboardButton(text="Product2", callback_data="product_buying")],
-    [InlineKeyboardButton(text="Product3", callback_data="product_buying")],
-    [InlineKeyboardButton(text="Product4", callback_data="product_buying")]
+    [InlineKeyboardButton(text="Продукт 1", callback_data="product_buying")],
+    [InlineKeyboardButton(text="Продукт 2", callback_data="product_buying")],
+    [InlineKeyboardButton(text="Продукт 3", callback_data="product_buying")],
+    [InlineKeyboardButton(text="Продукт 4", callback_data="product_buying")]
 ])
 
 
