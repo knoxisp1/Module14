@@ -1,13 +1,14 @@
 from aiogram import Bot, Dispatcher, executor, types
+from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.dispatcher import FSMContext
 import asyncio
 
-api = "7993073270:AAFjsMFNPo_sL-4wG7cuM_BCYIrgHJKNS6M"
+api = ""
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
+
 kb_reply = ReplyKeyboardMarkup(resize_keyboard=True)
 btn1 = KeyboardButton(text="Рассчитать")
 btn2 = KeyboardButton(text="Информация")
@@ -19,6 +20,7 @@ kb_inline = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Продукт 2", callback_data="product_buying")],
     [InlineKeyboardButton(text="Продукт 3", callback_data="product_buying")],
     [InlineKeyboardButton(text="Продукт 4", callback_data="product_buying")]
+
 ])
 
 
@@ -36,16 +38,15 @@ async def start(message):
 @dp.message_handler(text="Купить")
 async def get_buying_list(message):
     for i in range(1, 5):
-        await message.answer(f"Название:Product {i}|Описание: Описание{i}|Цена:{i * 100}")
+        await message.answer(f"Название: Product {i} | Описание: описание {i}|Цена: {i * 100}")
         with open(f'C:/Users/Edward/PycharmProjects/Module14/Images/{i}.png', "rb") as img:
             await message.answer_photo(img)
 
     await message.answer("Выберите продукт для покупки:", reply_markup=kb_inline)
 
-
 @dp.callback_query_handler(text="product_buying")
 async def send_confirm_message(call):
-    await call.message.answer("Вы успешно приобрели продукт!")
+    await call.message.answer("Вы успешно приобрели продукт.")
     await call.answer()
 
 
